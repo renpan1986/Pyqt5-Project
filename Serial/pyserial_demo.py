@@ -4,23 +4,21 @@ import serial.tools.list_ports
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtCore import QTimer
-from Serial.ui_demo_1 import Ui_Form
+from ui_demo_1 import Ui_Form
 
 
 class Serial(QtWidgets.QWidget, Ui_Form):
     def __init__(self):
         super(Serial, self).__init__()
         self.setupUi(self)
-        self.init()
-        self.setWindowTitle("串口助手")
+        #self.init()
+        self.setWindowTitle("智能步进电机控制器终端")
         self.ser = serial.Serial()
-        self.port_check()
+        #self.port_check()
 
         # 接收数据和发送数据数目置零
-        self.data_num_received = 0
-        self.lineEdit.setText(str(self.data_num_received))
-        self.data_num_sended = 0
-        self.lineEdit_2.setText(str(self.data_num_sended))
+        self.VSLIDER.setValue(20000)
+        self.LCD.value = self.VSLIDER.value
 
     def init(self):
         # 串口检测按钮
